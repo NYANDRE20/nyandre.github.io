@@ -13,9 +13,9 @@ Je recherche une **alternance Systèmes, Réseaux et Sécurité** à partir d'**
 | Scans réseau et cartographie des actifs exposés (Nmap) | [Mission SSI, Blueline](https://nyandre20.github.io/#experiences) |
 | Plan de remédiation selon la méthode EBIOS RM | [Mission SSI, Blueline](https://nyandre20.github.io/#experiences) |
 | Priorisation des risques (CVSS, NVD, CVE) et rapports de sécurité | [Mission SSI, Blueline](https://nyandre20.github.io/#experiences) |
-| Audit de sécurité selon le Top 10 OWASP | [Audit d'un ERP Odoo, ArkeUp](https://nyandre20.github.io/#projets) |
+| Audit de sécurité selon le Top 10 OWASP | [Audit d'un ERP Odoo, ArkeUp](https://nyandre20.github.io/#experiences) |
 | Sécurité de l'IA générative (jailbreak, hallucinations) et conformité RGPD | [Chatbot IA simulé, ArkeUp](https://nyandre20.github.io/#experiences) |
-| Développement sécurisé avec contrôle d'accès par rôle | [Application Django, NY Havana](https://nyandre20.github.io/#projets) |
+| Développement sécurisé avec contrôle d'accès par rôle | [Application Django, NY Havana](https://nyandre20.github.io/#experiences) |
 | Reconnaissance réseau et exploitation de vulnérabilités | [Nmap et Metasploit](https://nyandre20.github.io/#projets) |
 
 ## Outils
