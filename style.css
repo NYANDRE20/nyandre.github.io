@@ -16,6 +16,7 @@ html {
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
   scroll-padding-top: 0;
+  font-size: clamp(14px, 0.35vw + 11px, 22px);
 }
 
 body {
@@ -57,10 +58,11 @@ code {
 /* ---------- Sections : une page = un écran ---------- */
 section {
   min-height: 100vh;
+  min-height: 100svh;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-h) + 1.5rem) 2rem 2.5rem;
+  padding: calc(var(--nav-h) + 1.5rem) clamp(1.2rem, 4vw, 6rem) 2.5rem;
 
   /* thème sombre par défaut */
   --bg: var(--black);
@@ -93,6 +95,24 @@ section {
   width: 100%;
   max-width: 2000px;
   margin: 0 auto;
+}
+
+/* Sections 2 à 5 : le contenu occupe toute la hauteur de l'écran */
+#parcours .wrap,
+#experiences .wrap,
+#projets .wrap,
+#cv .wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100svh - var(--nav-h) - 4rem);
+}
+
+#parcours h2,
+#experiences h2,
+#projets h2,
+#cv h2 {
+  margin-bottom: clamp(1.5rem, 4vh, 3rem);
 }
 
 .muted {
@@ -223,69 +243,73 @@ a {
 }
 
 
-/* ---------- 1. Présentation (3 colonnes) ---------- */
-.hero{
-  display:grid;
-  grid-template-columns:1fr 280px;
-  gap:3rem;
-  align-items:center
+/* ---------- 1. Présentation ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 3rem;
+  align-items: center;
 }
 
-.hero h1{
-  font-size:clamp(2rem,5vw,4rem);
-  font-weight:800
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  margin: 1rem 1rem 2rem;
 }
 
-.hero .role{
-  font-size:1.15rem;
-  color:var(--blue);
-  font-weight:500;
-  margin:1rem 0 1.2rem
+.hero .role {
+  font-size: 1.3rem;
+  color: var(--blue);
+  font-weight: 500;
+  margin: 1rem 1rem 2rem;
 }
 
-.hero p{
-  max-width: 65ch;
-  margin: 10px;
+.hero p {
+  max-width: 60%;
+  margin: 1rem;
   text-align: justify;
 }
 
-.photo{
-  width:280px;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  border-radius:140px 140px 24px 24px;
-  border:2px solid var(--beige);
-  background:var(--fill)
+.photo {
+  width: 280px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 140px 140px 24px 24px;
+  border: 2px solid var(--beige);
+  background: var(--fill);
 }
 
-.cols{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;
-  margin-top:2.5rem
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
-.lang{
-  list-style:none;
-  margin-top:.6rem
+.lang {
+  list-style: none;
+  margin-top: .6rem;
 }
 
-.lang li{
-  display:flex;
-  justify-content:space-between;
-  gap:1rem;padding:.4rem 0;
-  border-bottom:1px dashed var(--line)
+.lang li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .4rem 0;
+  border-bottom: 1px dashed var(--line);
 }
 
 .lang li:last-child {
-  border:none
+  border: none;
 }
+
 
 /* ---------- 2. Parcours (frise horizontale) ---------- */
 .timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  align-items: stretch;
   border-top: 3px solid var(--ink);
   padding-top: 2.2rem;
   margin-top: 1rem;
@@ -293,18 +317,31 @@ a {
 
 .step {
   position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.1rem, 1.6vw, 2rem);
 }
 
 .step::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: calc(-2.2rem - 10.5px);
+  left: 1.5rem;
+  top: calc(-2.2rem - 10.5px - 1px);
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background: var(--blue);
   border: 3px solid var(--ink);
+}
+
+.step h3 {
+  font-size: clamp(1.15rem, 1.5vw, 1.6rem);
+  margin-top: .3rem;
+}
+
+.step p {
+  margin-top: .5rem;
 }
 
 .shots {
@@ -327,15 +364,20 @@ a {
 .exp {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  align-items: stretch;
 }
 
 .exp article {
-  font-size: .93rem;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.1rem, 1.6vw, 2rem);
+  font-size: .98rem;
   line-height: 1.5;
 }
 
 .exp h3 {
+  font-size: clamp(1.15rem, 1.5vw, 1.6rem);
   margin-top: .3rem;
 }
 
@@ -347,12 +389,21 @@ a {
   margin-bottom: .35rem;
 }
 
+.exp .tags {
+  margin-bottom: 1.2rem;
+}
+
 blockquote {
   margin-top: 1.2rem;
   padding: .9rem 1rem;
   border-left: 4px solid var(--blue);
   background: var(--fill);
   border-radius: 0 12px 12px 0;
+}
+
+/* la recommandation reste toujours en bas de la carte */
+.exp blockquote {
+  margin-top: auto;
 }
 
 blockquote footer {
@@ -371,15 +422,36 @@ blockquote .btn {
 .projects {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  align-items: stretch;
 }
 
 .project {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.1rem, 1.6vw, 2rem);
+  min-height: clamp(14rem, 36vh, 26rem);
+}
+
+.project > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project h3 {
+  font-size: clamp(1.3rem, 1.8vw, 1.9rem);
+  margin-bottom: .6rem;
 }
 
 .project p {
   margin-top: .5rem;
+  font-size: 1.02rem;
+}
+
+.project .tags {
+  margin-top: auto;
+  padding-top: 1.2rem;
 }
 
 pre {
@@ -414,15 +486,33 @@ pre {
 .cv {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  align-items: stretch;
+}
+
+.cv .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 2.2vw, 2.8rem);
+}
+
+.cv .box h3 {
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  margin-bottom: .8rem;
+}
+
+.cv .box .btn {
+  align-self: flex-start;
 }
 
 .cv .box ul {
   margin: .8rem 0 0 1.2rem;
+  line-height: 1.9;
 }
 
 .contact {
-  margin-top: 2rem;
+  margin-top: clamp(1.5rem, 4vh, 3rem);
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -435,6 +525,31 @@ footer.site {
   font-size: .9rem;
   background: var(--black);
   border-top: 1px solid #2A323B;
+}
+
+
+/* ---------- Ordinateur : la frise commence par 2021 ---------- */
+@media (min-width: 1001px) {
+  /* l'ordre du HTML est du plus récent au plus ancien : on l'inverse à l'affichage */
+  .step:nth-child(1) {
+    order: 4;
+  }
+
+  .step:nth-child(2) {
+    order: 3;
+  }
+
+  .step:nth-child(3) {
+    order: 2;
+  }
+
+  .step:nth-child(4) {
+    order: 1;
+  }
+
+  .step {
+    min-height: clamp(12rem, 30vh, 24rem);
+  }
 }
 
 
@@ -468,9 +583,20 @@ footer.site {
 
 /* ---------- Tablette / mobile ---------- */
 @media (max-width: 1000px) {
+  #parcours .wrap,
+  #experiences .wrap,
+  #projets .wrap,
+  #cv .wrap {
+    min-height: 0;
+  }
+
   .exp,
   .projects {
     grid-template-columns: 1fr;
+  }
+
+  .project {
+    min-height: 0;
   }
 
   .intro {
@@ -500,8 +626,8 @@ footer.site {
   }
 
   .step::before {
-    left: calc(-2rem - 10.5px);
-    top: .4rem;
+    left: calc(-2rem - 10.5px - 1px);
+    top: 1.4rem;
   }
 }
 
